@@ -119,7 +119,7 @@ def mine():
     if "id" not in res or "proof" not in res:
         return {"message": "required field missing"}, 400
 
-    valid = blockchain.valid_proof(json.dumps(prev), res["proof"])
+    valid = blockchain.valid_proof(json.dumps(prev, sort_keys=True), res["proof"])
     if "id" in blockchain.last_block:
         valid = False
     if valid:
